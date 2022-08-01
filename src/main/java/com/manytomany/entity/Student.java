@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "students")
+@Table(name = "student")
 public class Student {
 
     @Id
@@ -13,6 +13,7 @@ public class Student {
     private String name;
 
     @ManyToMany(targetEntity = Course.class,cascade = CascadeType.MERGE)
+    @JoinColumn(name = "courses_id")
     private Set<Course> courses;
 
     public long getId() {
