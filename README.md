@@ -1,5 +1,8 @@
 # many-to-many-jpa
 
+## ER Model
+![M2M](https://user-images.githubusercontent.com/47694676/182286869-16682fd2-25ed-4e72-b3f2-7ea5ba4813d1.png)
+
 ## POST : http://localhost:9090/save
 ```
 {
