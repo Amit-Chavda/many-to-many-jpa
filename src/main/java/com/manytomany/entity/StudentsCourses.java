@@ -1,33 +1,35 @@
 package com.manytomany.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "student_courses")
 public class StudentsCourses {
 
-    @EmbeddedId
-    private StudentCourseCompositeKey studentCourseCompositeKey;
-    @ManyToOne
-    @MapsId("studentId")
-    @JoinColumn(name = "student_id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @ManyToOne(targetEntity = Student.class,cascade = CascadeType.ALL)
+    @JoinColumn(name = "student_id",referencedColumnName = "id")
     private Student student;
 
-    @ManyToOne
-    @MapsId("courseId")
-    @JoinColumn(name = "courses_id")
+    
+    @ManyToOne(targetEntity = Course.class,cascade = CascadeType.ALL)
+    @JoinColumn(name = "course_id",referencedColumnName = "id")
     private Course course;
 
     @Column(name = "others")
     private String otherFields;
 
 
-    public String getOtherFields() {
-        return otherFields;
+    public int getId() {
+        return id;
     }
 
-    public void setOtherFields(String otherFields) {
-        this.otherFields = otherFields;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Student getStudent() {
@@ -38,4 +40,19 @@ public class StudentsCourses {
         this.student = student;
     }
 
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public String getOtherFields() {
+        return otherFields;
+    }
+
+    public void setOtherFields(String otherFields) {
+        this.otherFields = otherFields;
+    }
 }

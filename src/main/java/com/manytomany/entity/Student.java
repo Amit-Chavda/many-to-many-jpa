@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "student")
 public class Student {
 
     @Id
@@ -12,9 +11,8 @@ public class Student {
     private long id;
     private String name;
 
-    @ManyToMany(targetEntity = Course.class,cascade = CascadeType.MERGE)
-    @JoinColumn(name = "courses_id")
-    private Set<Course> courses;
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private Set<StudentsCourses> studentsCourses;
 
     public long getId() {
         return id;
@@ -32,11 +30,14 @@ public class Student {
         this.name = name;
     }
 
-    public Set<Course> getCourses() {
-        return courses;
+    public Set<StudentsCourses> getStudentsCourses() {
+        return studentsCourses;
     }
 
-    public void setCourses(Set<Course> courses) {
-        this.courses = courses;
+    public void setStudentsCourses(Set<StudentsCourses> studentsCourses) {
+        for (StudentsCourses studentsCourses1:studentsCourses) {
+            studentsCourses1.setStudent(this);
+        }
+        this.studentsCourses = studentsCourses;
     }
 }
