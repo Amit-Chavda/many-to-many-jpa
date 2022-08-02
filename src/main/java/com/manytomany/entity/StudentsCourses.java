@@ -1,7 +1,5 @@
 package com.manytomany.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +14,7 @@ public class StudentsCourses {
     private Student student;
 
     
+
     @ManyToOne(targetEntity = Course.class,cascade = CascadeType.ALL)
     @JoinColumn(name = "course_id",referencedColumnName = "id")
     private Course course;

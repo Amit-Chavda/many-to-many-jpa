@@ -3,7 +3,6 @@ package com.manytomany;
 import com.manytomany.entity.Course;
 import com.manytomany.entity.Student;
 import com.manytomany.entity.StudentsCourses;
-import com.manytomany.repository.StudentRespository;
 import com.manytomany.repository.StudentsCoursesRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,13 +26,13 @@ public class ManyToManyJPAApplication {
 
 
     @PostConstruct
-    public void run1() {
+    public void save() {
         Student student = new Student();
-        student.setName("Kevin");
+        student.setName("Tony");
 
 
         Course course = new Course();
-        course.setName("Civil");
+        course.setName("CS");
 
 
         StudentsCourses studentsCourses = new StudentsCourses();
@@ -42,11 +41,5 @@ public class ManyToManyJPAApplication {
         studentsCourses.setOtherFields("Others");
 
         studentsCoursesRepository.save(studentsCourses);
-
-
-        /*course.getStudentsCourses().add(studentsCourses);
-        student.getStudentsCourses().add(studentsCourses);
-        studentRespository.save(student);*/
-
     }
 }

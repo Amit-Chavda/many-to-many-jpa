@@ -1,5 +1,7 @@
 package com.manytomany.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,6 +13,7 @@ public class Student {
     private long id;
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private Set<StudentsCourses> studentsCourses;
 
@@ -39,5 +42,14 @@ public class Student {
             studentsCourses1.setStudent(this);
         }
         this.studentsCourses = studentsCourses;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", studentsCourses=" + studentsCourses +
+                '}';
     }
 }

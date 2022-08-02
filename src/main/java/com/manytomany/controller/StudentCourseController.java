@@ -6,7 +6,6 @@ import com.manytomany.entity.StudentsCourses;
 import com.manytomany.repository.CourseRepository;
 import com.manytomany.repository.StudentRespository;
 import com.manytomany.repository.StudentsCoursesRepository;
-import com.manytomany.service.StudentCourseService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -46,7 +45,7 @@ public class StudentCourseController {
     }
 
 
-    @PostMapping("/sc/save")
+    @PostMapping("/save")
     public StudentsCourses scSave(@RequestBody StudentsCourses studentsCourses) {
         return studentsCoursesRepository.save(studentsCourses);
     }
